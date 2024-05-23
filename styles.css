@@ -1,0 +1,188 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+}
+
+header {
+    background-color: rgb(250, 0, 39);
+    color: white;
+    text-align: center;
+    padding: 1em;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+h1 {
+    margin: 0;
+
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    padding-top: 60px; /* Space for the header */
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.sidebar button {
+    display: block;
+    width: 100%;
+    color: white;
+    background-color: #333;
+    border: none;
+    padding: 1em;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+}
+
+.sidebar button:hover {
+    background-color: #575757;
+}
+
+main {
+    margin-left: 200px; /* Space for the sidebar */
+    padding: 60px 20px 20px 20px; /* Space for the header and some padding */
+    background-color: #f4f4f4;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px); /* Full height minus header */
+    position: relative;
+}
+
+.center-image {
+    max-width: 100%;
+    max-height: 100%;
+    border: 2px solid #333; /* Optional: Adds a border around the image */
+}
+
+
+
+/* Animation styles */
+.hidden {
+    display: none;
+}
+
+
+#animation {
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    background-color: rgba(250, 0, 39, 0.8);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 1s;
+    z-index: 3;
+}
+
+#animation.show {
+    display: flex;
+    opacity: 1;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5%;
+}
+
+p{
+    font-size: 12px;
+    text-align: center;
+
+}
+h2{
+    font-family: "Elanor Free Font";
+    color:rgb(243, 243, 243) ;
+    font-size: 16px;
+    text-align: center;
+    text-shadow: #575757;
+}
+
+/* Disco Ball styles */
+#disco-ball {
+    position: fixed;
+    top: -150px; /* Start above the viewport */
+    left: 53%;
+    transform: translateX(-50%);
+    width: 200px; /* Adjust size as needed */
+    transition: top 1s, opacity 1s; /* Added opacity transition */
+    opacity: 0; /* Start with opacity 0 */
+    z-index: 3;
+}
+
+#disco-ball.show {
+    top: 60px; /* Drop down to this position */
+    opacity: 1; /* Make the disco ball visible */
+}
+/* Confetti styles */
+.confetti {
+    position: fixed;
+    top: 0;
+    width: 15px;
+    height: 15px;
+    background-color: rgb(255, 247, 0);
+    border-radius: 50%;
+    animation: confetti-fall 3s forwards;
+    opacity: 0;
+    z-index: 3;
+}
+
+.confetti.flower {
+    background-color: rgb(0, 4, 255);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    
+}
+
+.confetti.star {
+    background-color: rgb(0, 255, 51);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    width: 20px;
+    height: 20px;
+}
+
+/* Overlay styles */
+#dark-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+#dark-overlay.show {
+    opacity: 1;
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+@font-face {
+    font-family: 'Elanor Free Font';
+    src: url('assets/ElanorFreePersonalUse-ExBdIt.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}

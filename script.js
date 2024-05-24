@@ -75,7 +75,7 @@ function showDiscoBall(discoBall) {
     discoBall.classList.add('show');
     // Move the disco ball down a bit after a short delay
     setTimeout(() => {
-        discoBall.style.top = '150px'; // Adjust as needed
+        discoBall.style.top = '120px'; // Adjust as needed
     }, 300); // Delay in milliseconds
 }
 

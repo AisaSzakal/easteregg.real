@@ -1,3 +1,6 @@
+const backgroundColors = ["rgba(0, 0, 0, 0.9)", "rgba(255, 0, 0, 0.9)", "rgba(0, 255, 0, 0.9)", "rgba(0, 0, 255, 0.9)"];
+let currentColorIndex = 0;
+
 document.addEventListener('keydown', function(event) {
     // Check if Command (Meta) and B are pressed
     if (event.metaKey && event.key === 'b') {
@@ -19,6 +22,7 @@ document.addEventListener('keydown', function(event) {
             createConfetti();
             showDiscoBall(discoBall);
             music.play();
+            cycleBackgroundColors();
         } else {
             animationElement.classList.remove('show');
             animationElement.classList.add('hidden');
@@ -26,10 +30,21 @@ document.addEventListener('keydown', function(event) {
             overlay.classList.add('hidden');
             hideDiscoBall(discoBall);
             music.pause();
-            music.currentTime = 0; 
+            music.currentTime = 0;
+            clearInterval(colorInterval);
+            // Reset to the first color
+            document.body.style.backgroundColor = backgroundColors[0];
+            currentColorIndex = 0; 
         }
     }
 });
+
+function cycleBackgroundColors() {
+    colorInterval = setInterval(() => {
+        currentColorIndex = (currentColorIndex + 1) % backgroundColors.length;
+        document.body.style.backgroundColor = backgroundColors[currentColorIndex];
+    }, 300); // Change color every 300 milliseconds
+}
 
 function createConfetti() {
     const confettiContainer = document.getElementById('confetti-container');
